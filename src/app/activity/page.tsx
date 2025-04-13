@@ -1,12 +1,9 @@
 import MainNavLayout from '@/components/MainNavLayout'
-import ImageCarousel from '@/components/home-carousel'
 
-export default function Homepage() {
+export default function Activity() {
   return (
     <MainNavLayout>
-      <ImageCarousel />
-
-      <h1 className="text-4xl font-bold mb-6 text-center mt-10">Welcome to IGEN</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">Activity</h1>
       <p className="text-lg text-center text-gray-700 mb-6">
         We're a youth volunteer network that connects passionate students and communities together
         through meaningful activities and projects.
