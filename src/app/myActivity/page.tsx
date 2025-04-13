@@ -5,9 +5,18 @@ import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 import MemberLayout from '@/components/memberLayout'
 
+type User = {
+  username: string
+  email: string
+  firstname: string
+  lastname: string
+  nickname: string
+  igen_club: string
+  role: string
+}
+
 export default function MyActivityPage() {
-  const [user, setUser] = useState<any>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [user, setUser] = useState<User | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -31,16 +40,14 @@ export default function MyActivityPage() {
       } else {
         setUser(data)
       }
-      setIsLoading(false)
     }
 
     fetchUser()
-  }, [])
-
+  }, [router])
 
   return (
     <MemberLayout>
-      <h1 className="text-3xl font-bold mb-6 text-center">My Profile</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">My Activities</h1>
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead className="bg-darkblue-100">

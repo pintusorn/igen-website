@@ -5,10 +5,25 @@ import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 import AdminLayout from '@/components/adminLayout'
 
+type User = {
+  user_id: string
+  username: string
+  email: string
+  firstname: string
+  lastname: string
+  nickname: string
+  igen_club: string
+  role: string
+  current_score: number
+}
+
+
 export default function MemberInfoPage() {
   const router = useRouter()
-  const [users, setUsers] = useState<any[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [users, setUsers] = useState<User[]>([])
+
+
+  // const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const role = localStorage.getItem('role')
@@ -24,7 +39,7 @@ export default function MemberInfoPage() {
       } else {
         setUsers(data)
       }
-      setIsLoading(false)
+      // setIsLoading(false)
     }
 
     fetchUsers()

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 
 export default function SignupPage() {
   const router = useRouter()
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -28,18 +29,20 @@ export default function SignupPage() {
     supervisor: '',
   })
 
+  type FormKey = keyof typeof formData
+
   const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
-
     const { email, password, ...profileData } = formData
 
-    const { data, error: signUpError } = await supabase.auth.signUp({ email, password })
+    const { error: signUpError } = await supabase.auth.signUp({ email, password })
     if (signUpError) {
       setError(signUpError.message)
       return
@@ -58,27 +61,27 @@ export default function SignupPage() {
     <div className="max-w-2xl mx-auto mt-10 bg-white shadow-md rounded-lg p-8 text-black">
       <h1 className="text-3xl font-bold mb-6 text-center">Register</h1>
       <form onSubmit={handleSignup} className="space-y-4">
-        {[
-          ['firstname', 'First Name'],
-          ['lastname', 'Last Name'],
-          ['nickname', 'Nickname'],
-          ['dob', 'Date of Birth'],
-          ['gender', 'Gender'],
-          ['student_status', 'Student Status'],
-          ['home_country', 'Home Country'],
-          ['latest_university', 'Latest University'],
-          ['study_year', 'Study Year'],
-          ['degree', 'Degree'],
-          ['interest', 'Interest'],
-          ['current_score', 'Current Score'],
-          ['role', 'Role'],
-          ['telephone', 'Telephone'],
-          ['igen_club', 'IGEN Club'],
-          ['supervisor', 'Supervisor'],
-          ['username', 'Username'],
-          ['email', 'Email'],
-          ['password', 'Password'],
-        ].map(([key, label]) => (
+        {Object.entries({
+          firstname: 'First Name',
+          lastname: 'Last Name',
+          nickname: 'Nickname',
+          dob: 'Date of Birth',
+          gender: 'Gender',
+          student_status: 'Student Status',
+          home_country: 'Home Country',
+          latest_university: 'Latest University',
+          study_year: 'Study Year',
+          degree: 'Degree',
+          interest: 'Interest',
+          current_score: 'Current Score',
+          role: 'Role',
+          telephone: 'Telephone',
+          igen_club: 'IGEN Club',
+          supervisor: 'Supervisor',
+          username: 'Username',
+          email: 'Email',
+          password: 'Password',
+        }).map(([key, label]) => (
           <div key={key} className="flex flex-col">
             <label htmlFor={key} className="text-sm font-medium mb-1">{label}</label>
             <input
@@ -86,7 +89,7 @@ export default function SignupPage() {
               name={key}
               id={key}
               placeholder={label}
-              value={(formData as any)[key]}
+              value={formData[key as FormKey]}
               onChange={handleChange}
               className="border border-gray-300 p-2 rounded-md"
               required

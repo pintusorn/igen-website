@@ -12,7 +12,7 @@ export default function MainNavLayout({ children }: { children: React.ReactNode 
   const [nickname, setNickname] = useState<string | null>(null)
   const [role, setRole] = useState<string | null>(null)
 
-  const [avatarUrl, setAvatarUrl] = useState<string>('https://i.pravatar.cc/40')
+  const [avatarUrl] = useState<string>('https://i.pravatar.cc/40')
   const [showDropdown, setShowDropdown] = useState(false)
   const [isUserLoading, setIsUserLoading] = useState(true)
 

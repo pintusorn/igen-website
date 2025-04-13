@@ -4,9 +4,21 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/navigation'
 import MemberLayout from '@/components/memberLayout'
+import Image from 'next/image'
+
+
+type User = {
+  username: string
+  email: string
+  firstname: string
+  lastname: string
+  nickname: string
+  igen_club: string
+  role: string
+}
 
 export default function ProfilePage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const router = useRouter()
 
@@ -35,7 +47,8 @@ export default function ProfilePage() {
     }
 
     fetchUser()
-  }, [])
+  }, [router])
+
 
   if (isLoading || !user) {
     return <p className="text-center mt-20">Loading profile...</p>
@@ -50,11 +63,14 @@ export default function ProfilePage() {
             <tr>
               {/* Column 1: Image */}
               <td className="border px-4 py-6 w-[180px] text-center align-top">
-                <img
-                  src={'/avatar.jpeg'}
-                  alt="Profile"
-                  className="w-32 h-32 object-cover mx-auto border border-gray-400 rounded-md"
-                />
+              <Image
+                src="/avatar.jpeg"
+                alt="Profile"
+                width={128}
+                height={128}
+                className="object-cover mx-auto border border-gray-400 rounded-md"
+              />
+
 
 
                 <button

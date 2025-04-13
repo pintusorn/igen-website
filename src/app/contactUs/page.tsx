@@ -5,7 +5,7 @@ export default function ContactUs() {
     <MainNavLayout>
       <h1 className="text-4xl font-bold mb-6 text-center">Contact Us</h1>
       <p className="text-lg text-center text-gray-700 mb-6">
-        We're a youth volunteer network that connects passionate students and communities together
+        We&apos;re a youth volunteer network that connects passionate students and communities together
         through meaningful activities and projects.
       </p>
       <div className="text-center">

@@ -5,7 +5,7 @@ export default function AboutUs() {
     <MainNavLayout>
       <h1 className="text-4xl font-bold mb-6 text-center">About Us</h1>
       <p className="text-lg text-center text-gray-700 mb-6">
-        We're a yyyyyouth volunteer network that connects passionate students and communities together
+        We&apos;re a yyyyyouth volunteer network that connects passionate students and communities together
         through meaningful activities and projects.
       </p>
       <div className="text-center">
