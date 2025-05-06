@@ -105,7 +105,7 @@ export default function MainNavLayout({ children }: { children: React.ReactNode 
                 {/* Hi, Nickname + Avatar */}
                 <div className="flex items-center space-x-3">
                   <span className="text-lg text-gray-800 font-semibold">Hi, {nickname}</span>
-                  <img
+                  <Image
                     src={avatarUrl}
                     alt="User Avatar"
                     onClick={() => setShowDropdown(!showDropdown)}

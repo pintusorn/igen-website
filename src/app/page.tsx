@@ -1,5 +1,6 @@
 import MainNavLayout from '@/components/MainNavLayout'
 import ImageCarousel from '@/components/home-carousel'
+import WorldMapHighlight from '@/components/worldMapHighlight' // 👈 add this
 
 export default function Homepage() {
   return (
@@ -11,7 +12,10 @@ export default function Homepage() {
         We&apos;re a youth volunteer network that connects passionate students and communities together
         through meaningful activities and projects.
       </p>
-      <div className="text-center">
+
+      <WorldMapHighlight /> {/* 👈 show the map here */}
+
+      <div className="text-center mt-10">
         <button className="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
           Explore Activities
         </button>

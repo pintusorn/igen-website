@@ -1,4 +1,6 @@
 'use client'
+import Image from 'next/image'
+
 
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
@@ -35,7 +37,7 @@ export default function ImageCarousel() {
       <div ref={sliderRef} className="keen-slider h-[500px] rounded-md overflow-hidden transition-transform duration-5000">
         {images.map((src, index) => (
           <div key={index} className="keen-slider__slide flex items-center justify-center">
-            <img src={src} alt={`slide-${index}`} className="w-full h-full object-contain mx-auto" />
+            <Image src={src} alt={`slide-${index}`} className="w-full h-full object-contain mx-auto" />
           </div>
         ))}
       </div>
